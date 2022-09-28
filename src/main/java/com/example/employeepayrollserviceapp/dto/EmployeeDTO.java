@@ -11,10 +11,12 @@ public class EmployeeDTO {
     private LocalDate date;
     private String notes;
 
+
+    //creating construction of EmployeeDTO class
     public EmployeeDTO() {
 
     }
-
+    //creating parameterized construction of EmployeeDTO class
     public EmployeeDTO(String firstName, String lastName, String profilePic, String address, Long salary,
                        LocalDate date, String notes) {
 

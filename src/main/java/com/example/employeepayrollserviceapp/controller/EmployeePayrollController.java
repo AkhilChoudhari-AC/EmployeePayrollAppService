@@ -63,6 +63,9 @@ public class EmployeePayrollController {
     public ResponseEntity<Employee> updateDataInRepo(@PathVariable Integer id,@RequestBody EmployeeDTO employeeDTO){
         return new ResponseEntity<Employee>(service.updateDataById(id,employeeDTO),HttpStatus.OK);
     }
+
+    //UC4: Introducing the service layer and implement the interface class
+
     //ability to delete employee data for particular id
     @DeleteMapping("/employeepayrollservice/delete/{id}")
     public ResponseEntity<String> deleteDataInRepo(@PathVariable Integer id){

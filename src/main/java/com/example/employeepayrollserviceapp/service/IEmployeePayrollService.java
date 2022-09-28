@@ -12,6 +12,7 @@ public interface IEmployeePayrollService {
     public String putMessage(String name) ;
     public String getWelcome();
     public Employee postDataToRepo(Employee employee);
+   //list is used to save our data
     public List<Employee> getAllData();
     public Employee getDataById(Integer id);
     public Employee updateDataById(Integer id, EmployeeDTO employeeDTO);

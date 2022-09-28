@@ -6,9 +6,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.time.LocalDate;
+
+//It is used to create the tables in the database
 @Entity
 public class Employee {
+
+    //This annotation specifies the primary key of an entity
     @Id
+
+    // To automatically generate the primary key values
     @GeneratedValue
     private Integer id;
     private String firstName;
