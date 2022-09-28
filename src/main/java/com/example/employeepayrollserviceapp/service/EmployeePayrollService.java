@@ -13,12 +13,12 @@ import java.util.Optional;
 public class EmployeePayrollService implements IEmployeePayrollService {
    //dependence injection, it is a class level injection
     @Autowired
-    EmployeePayrollRepository repo;
+    EmployeePayrollRepository repository;
 
     public String getMessage(String name) {
         return "Welcome "+name;
     }
-    public String postMessage(Employee employee) {
+    public String postMessage(EmployeeDTO employee) {
         return "Hello "+employee.getFirstName()+""+employee.getLastName()+"!";
     }
     public String putMessage(String name) {
@@ -27,29 +27,27 @@ public class EmployeePayrollService implements IEmployeePayrollService {
     public String getWelcome() {
         return "Welcome to Employee Payroll !!!";
     }
-    public Employee postDataToRepo(Employee employee) {
+    public Employee postDataToRepo(EmployeeDTO employee) {
         Employee newEmployee = new Employee(employee);
-        repo.save(newEmployee);
+        repository.save(newEmployee);
         return newEmployee;
     }
     public List<Employee> getAllData(){
-        List<Employee> list=repo.findAll();
+        List<Employee> list=repository.findAll();
         return list;
     }
-    public Employee getDataById(Integer id) {
-        Optional<Employee> newEmployee = repo.findById(id);
-        if(newEmployee.isPresent())
-            return newEmployee.get();
-        else
-            return null;
+    public Optional<Employee> getDataById(Integer id) {
+        Optional<Employee> newEmployee = repository.findById(id);
+        return newEmployee;
     }
+
     public Employee updateDataById(Integer id, EmployeeDTO employeeDTO) {
         Employee newEmployee = new Employee(id,employeeDTO);
-        repo.save(newEmployee);
+        repository.save(newEmployee);
         return newEmployee;
     }
     public String deleteDataById(Integer id) {
-        repo.deleteById(id);
+        repository.deleteById(id);
         return "Employee with ID:"+id+" got deleted";
     }
 }

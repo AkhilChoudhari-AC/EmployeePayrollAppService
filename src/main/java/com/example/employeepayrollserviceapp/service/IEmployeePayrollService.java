@@ -7,14 +7,21 @@ import java.util.List;
 import java.util.Optional;
 
 public interface IEmployeePayrollService {
-    public String getMessage(String name) ;
-    public String postMessage(Employee employee);
-    public String putMessage(String name) ;
-    public String getWelcome();
-    public Employee postDataToRepo(Employee employee);
-   //list is used to save our data
+    String getMessage(String name);
+
+    String postMessage(EmployeeDTO employee);
+
+    String putMessage(String name);
+
+    String getWelcome();
+
+    public Employee postDataToRepo(EmployeeDTO employee);
+
     public List<Employee> getAllData();
-    public Employee getDataById(Integer id);
+
+    public Optional<Employee> getDataById(Integer id);
+
     public Employee updateDataById(Integer id, EmployeeDTO employeeDTO);
+
     public String deleteDataById(Integer id);
 }
