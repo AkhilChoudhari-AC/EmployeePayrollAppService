@@ -1,5 +1,7 @@
 package com.example.employeepayrollserviceapp.model;
 
+import com.example.employeepayrollserviceapp.dto.EmployeeDTO;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -16,17 +18,42 @@ public class Employee {
     private Long salary ;
     private LocalDate date;
     private String notes;
-    public Employee(Integer id, String firstName, String lastName, String profilePic, String address, Long salary,
-                    LocalDate date, String notes) {
+//    public Employee(Integer id, String firstName, String lastName, String profilePic, String address, Long salary,
+//                    LocalDate date, String notes) {
+//
+//        this.id = id;
+//        this.firstName = firstName;
+//        this.lastName = lastName;
+//        this.profilePic = profilePic;
+//        this.address = address;
+//        this.salary = salary;
+//        this.date = date;
+//        this.notes = notes;
+//    }
+
+    public Employee(EmployeeDTO dto) {
+        this.firstName = dto.getFirstName();
+        this.lastName = dto.getLastName();
+        this.profilePic = dto.getProfilePic();
+        this.address = dto.getAddress();
+        this.salary =dto.getSalary();
+        this.date =dto.getDate();
+        this.notes =dto.getNotes();
+    }
+
+    public Employee() {
+
+    }
+    public Employee(Integer id, EmployeeDTO employeeDTO) {
 
         this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.profilePic = profilePic;
-        this.address = address;
-        this.salary = salary;
-        this.date = date;
-        this.notes = notes;
+        this.firstName = employeeDTO.getFirstName();
+        this.lastName = employeeDTO.getLastName();
+        this.profilePic = employeeDTO.getProfilePic();
+        this.address = employeeDTO.getAddress();
+        this.salary =employeeDTO.getSalary();
+        this.date =employeeDTO.getDate();
+        this.notes =employeeDTO.getNotes();
     }
     public Employee(Employee employee) {
 
@@ -39,6 +66,7 @@ public class Employee {
         this.date = employee.date;
         this.notes = employee.notes;
     }
+
     public Integer getId() {
         return id;
     }
