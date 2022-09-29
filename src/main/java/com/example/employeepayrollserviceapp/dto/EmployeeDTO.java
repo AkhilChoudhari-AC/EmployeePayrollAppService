@@ -1,14 +1,19 @@
 package com.example.employeepayrollserviceapp.dto;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 
 import java.time.LocalDate;
 
 
 //It include getter and setter # no need to make getter and setter
-@Getter
-@Setter
+@Data
+//@Getter
+//@Setter
+
+
 public class EmployeeDTO {
     private String firstName;
     private String lastName;
@@ -35,5 +40,37 @@ public class EmployeeDTO {
         this.date = date;
         this.notes = notes;
     }
+//    public String getFirstName() {
+//        return firstName;
+//    }
+//
+//    public String getLastName() {
+//        return lastName;
+//    }
+//
+//
+//    public String getProfilePic() {
+//        return profilePic;
+//    }
+//
+//
+//    public String getAddress() {
+//        return address;
+//    }
+//
+//
+//    public Long getSalary() {
+//        return salary;
+//    }
+//
+//
+//    public LocalDate getDate() {
+//        return date;
+//    }
+//
+//
+//    public String getNotes() {
+//        return notes;
+//    }
 
 }
