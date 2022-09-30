@@ -44,15 +44,15 @@ public class Employee {
 
     }
 
-    public Employee(EmployeeDTO employee) {
+    public Employee(EmployeeDTO dto) {
 
-        this.firstName = employee.getFirstName();
-        this.lastName = employee.getLastName();
-        this.profilePic = employee.getProfilePic();
-        this.address = employee.getAddress();
-        this.salary = employee.getSalary();
-        this.date = employee.getDate();
-        this.notes = employee.getNotes();
+        this.firstName = dto.getFirstName();
+        this.lastName = dto.getLastName();
+        this.profilePic = dto.getProfilePic();
+        this.address = dto.getAddress();
+        this.salary = dto.getSalary();
+        this.date = dto.getDate();
+        this.notes = dto.getNotes();
     }
 
     public Employee(Integer id, EmployeeDTO employeeDTO) {

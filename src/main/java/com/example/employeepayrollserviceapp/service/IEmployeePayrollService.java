@@ -5,21 +5,15 @@ import com.example.employeepayrollserviceapp.model.Employee;
 
 import java.util.List;
 import java.util.Optional;
-
 public interface IEmployeePayrollService {
-    String getMessage(String name);
 
-    String postMessage(EmployeeDTO employee);
+    public String getWelcome();
 
-    String putMessage(String name);
-
-    String getWelcome();
-
-    public Employee postDataToRepo(EmployeeDTO employee);
+    public Employee postDataToRepo(EmployeeDTO employeeDTO);
 
     public List<Employee> getAllData();
 
-    public Optional<Employee> getDataById(Integer id);
+    public Employee getDataById(Integer id);
 
     public Employee updateDataById(Integer id, EmployeeDTO employeeDTO);
 

@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
+// This annotation shows that ,this class is going to handel the Exception
+//compile time exception
 @ControllerAdvice
 public class EmployeePayrollExceptionalHandler {
-    /**
-     * @ExceptionHandler :-
-     *        is an annotation used to handle the specific exceptions and sending the custom responses to the client.
-     */
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ResponseDTO> handlerMethodArgumentNotValidException(MethodArgumentNotValidException exception) {
 
@@ -27,7 +27,6 @@ public class EmployeePayrollExceptionalHandler {
         return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.BAD_REQUEST);
 
     }
-
     @ExceptionHandler(EmployeePayrollException.class)
     public ResponseEntity<ResponseDTO> handleEmployeeNotFound(EmployeePayrollException exception) {
         ResponseDTO response = new ResponseDTO("Invalid id input", exception.getMessage());
