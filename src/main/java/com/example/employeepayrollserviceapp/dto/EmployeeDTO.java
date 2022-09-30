@@ -20,6 +20,7 @@ import java.time.LocalDate;
 
 public class EmployeeDTO {
 
+    //Using regex patter for validation
     @Pattern(regexp="^[a-zA-Z]{3,10}$",message="Please Enter correct first name")
     private String firstName;
 

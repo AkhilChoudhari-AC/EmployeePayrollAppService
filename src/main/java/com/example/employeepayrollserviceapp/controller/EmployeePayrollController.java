@@ -125,6 +125,7 @@ public class EmployeePayrollController {
         return new ResponseEntity(dto,HttpStatus.ACCEPTED);
     }
     //Ability to delete employee data for particular id
+    //
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteDataInRepo(@PathVariable Integer id){
         ResponseDTO dto = new ResponseDTO("Record for particular ID Deleted Successfully", service.deleteDataById(id));
