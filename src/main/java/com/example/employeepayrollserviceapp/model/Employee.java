@@ -27,6 +27,13 @@ public class Employee {
     private Long salary ;
     private LocalDate date;
     private String notes;
+
+    // UC12 (Day-7) adding two more variable i.e. genger and department
+    private String gender;
+
+    // department (ME,CE,IT)
+    private String department;
+
 //    public Employee(Integer id, String firstName, String lastName, String profilePic, String address, Long salary,
 //                    LocalDate date, String notes) {
 //
@@ -53,6 +60,8 @@ public class Employee {
         this.salary = dto.getSalary();
         this.date = dto.getDate();
         this.notes = dto.getNotes();
+        this.gender = dto.getGender();
+        this.department = dto.getDepartment();
     }
 
     public Employee(Integer id, EmployeeDTO employeeDTO) {
@@ -64,6 +73,8 @@ public class Employee {
         this.salary = employeeDTO.getSalary();
         this.date = employeeDTO.getDate();
         this.notes = employeeDTO.getNotes();
+        this.gender = employeeDTO.getGender();
+        this.department = employeeDTO.getDepartment();
     }
 //    public Integer getId() {
 //        return id;

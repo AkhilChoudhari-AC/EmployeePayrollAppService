@@ -33,8 +33,14 @@ public class EmployeeDTO {
     @Min(value=1000,message="Salary should be more than 1000")
     @Max(value=100000,message="Salary should be more than 100000")
     private Long salary ;
+    @NotEmpty(message="Please enter the date")
     private LocalDate date;
+    @NotEmpty(message="Please enter the notes")
     private String notes;
+
+    private String gender;
+
+    private String department;
 
 
     //creating construction of EmployeeDTO class
@@ -43,7 +49,7 @@ public class EmployeeDTO {
     }
     //creating parameterized construction of EmployeeDTO class
     public EmployeeDTO(String firstName, String lastName, String profilePic, String address, Long salary,
-                       LocalDate date, String notes) {
+                       LocalDate date, String notes, String gender, String department) {
 
         this.firstName = firstName;
         this.lastName = lastName;
@@ -52,6 +58,8 @@ public class EmployeeDTO {
         this.salary = salary;
         this.date = date;
         this.notes = notes;
+        this.gender = gender;
+        this.department = department;
     }
 //    public String getFirstName() {
 //        return firstName;
