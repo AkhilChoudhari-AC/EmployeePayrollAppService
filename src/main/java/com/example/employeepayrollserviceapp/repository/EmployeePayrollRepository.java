@@ -10,10 +10,16 @@ import java.util.List;
 public interface EmployeePayrollRepository extends JpaRepository<Employee, Integer> {
 
 
-      //  @Query(value="select * from employee ,employee where id = id and department= :department",nativeQuery=true)
+     // Query to find data by department
+    //            table name as in SQL,  column name as in SQL, variable name as in model class
         @Query(value="select * from employee where department= :department",nativeQuery=true)
-      // @Query(value="select id, first_name, department from employee where department = IT",nativeQuery=true)
+
         List<Employee> findByDepartment(String department);
+        // Query to find data by firstname
+        @Query(value="select * from employee where first_name= :firstName",nativeQuery = true)
+        List<Employee> findByFirstName(String firstName);
+
+
 
 
 }

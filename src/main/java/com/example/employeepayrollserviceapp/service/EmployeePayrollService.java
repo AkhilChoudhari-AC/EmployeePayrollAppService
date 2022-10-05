@@ -14,11 +14,11 @@ import java.util.Optional;
 @Slf4j
 @Service
 public class EmployeePayrollService implements IEmployeePayrollService {
-   //dependence injection, it is a class level injection
+    //dependence injection, it is a class level injection
     @Autowired
     EmployeePayrollRepository repository;
 
-//    public String getMessage(String name) {
+    //    public String getMessage(String name) {
 //        return "Welcome "+name;
 //    }
 //    public String postMessage(EmployeeDTO employee) {
@@ -53,9 +53,9 @@ public class EmployeePayrollService implements IEmployeePayrollService {
 //        repository.deleteById(id);
 //        return "Employee with ID:"+id+" got deleted";
 //    }
-public String getWelcome() {
-    return "Welcome to Employee Payroll !!!";
-}
+    public String getWelcome() {
+        return "Welcome to Employee Payroll !!!";
+    }
 
     public Employee postDataToRepo(EmployeeDTO employeeDTO) {
         Employee newEmployee = new Employee(employeeDTO);
@@ -75,14 +75,6 @@ public String getWelcome() {
         } else throw new EmployeePayrollException("Employee id not found");
     }
 
-    public List<Employee> getDataByFirstName(String firstName){
-    List<Employee> newEmployee = repository.findByDepartment(firstName);
-    if(newEmployee.isEmpty()){
-        log.warn("Given name data is not found" +firstName);
-        throw new EmployeePayrollException("Employee Not found");
-    }
-    return newEmployee;
-   }
 
     public Employee updateDataById(Integer id, EmployeeDTO employeeDTO) {
         Optional<Employee> newEmployee = repository.findById(id);
@@ -104,8 +96,17 @@ public String getWelcome() {
         }
         return null;
     }
+
     public List<Employee> getDataByDepartment(String department) {
         List<Employee> newEmp = repository.findByDepartment(department);
+        if (newEmp.isEmpty()) {
+            throw new EmployeePayrollException("Employee Not Found");
+        }
+        return newEmp;
+    }
+
+    public List<Employee> getDataByFirstName(String firstName) {
+        List<Employee> newEmp = repository.findByFirstName(firstName);
         if (newEmp.isEmpty()) {
             throw new EmployeePayrollException("Employee Not Found");
         }

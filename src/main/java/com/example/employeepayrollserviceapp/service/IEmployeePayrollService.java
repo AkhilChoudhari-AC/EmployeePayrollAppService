@@ -15,11 +15,10 @@ public interface IEmployeePayrollService {
 
     public Employee getDataById(Integer id);
 
-    public List<Employee> getDataByFirstName(String firstName);
-
     public Employee updateDataById(Integer id, EmployeeDTO employeeDTO);
 
     public String deleteDataById(Integer id);
     public List<Employee> getDataByDepartment(String department);
+    public List<Employee> getDataByFirstName(String firstName);
 
 }

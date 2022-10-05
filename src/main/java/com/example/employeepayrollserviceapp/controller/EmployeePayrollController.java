@@ -145,7 +145,12 @@ public class EmployeePayrollController {
         return new ResponseEntity(dto, HttpStatus.OK);
     }
 
-
+    @GetMapping("/getbyfirstname/{firstname}")
+    public ResponseEntity<ResponseDTO> getRecordFromRepoByFirstName(@PathVariable String firstname) throws EmployeePayrollException {
+        List<Employee> newEmployee = service.getDataByFirstName(firstname);
+        ResponseDTO dto = new ResponseDTO("Record for given Department Retrieved Successfully", newEmployee);
+        return new ResponseEntity(dto, HttpStatus.OK);
+    }
 
 
 
