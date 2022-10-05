@@ -34,8 +34,9 @@ public class EmployeeDTO {
     @Max(value=100000,message="Salary should be more than 100000")
     private Long salary ;
 
-   // @PastOrPresent(message = "PastOrPresent")
-   //@JsonFormat(pattern = "YYYY-MM-DD")
+  //  @PastOrPresent(message = "PastOrPresent")
+   //@JsonFormat(pattern = "DD-MM-YYYY")
+   // @NotEmpty(message="Please enter the date")
     private LocalDate date;
     @NotEmpty(message="Please enter the notes")
     private String notes;

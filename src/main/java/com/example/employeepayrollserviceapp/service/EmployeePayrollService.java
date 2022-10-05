@@ -4,13 +4,14 @@ import com.example.employeepayrollserviceapp.dto.EmployeeDTO;
 import com.example.employeepayrollserviceapp.exception.EmployeePayrollException;
 import com.example.employeepayrollserviceapp.model.Employee;
 import com.example.employeepayrollserviceapp.repository.EmployeePayrollRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
-
+@Slf4j
 @Service
 public class EmployeePayrollService implements IEmployeePayrollService {
    //dependence injection, it is a class level injection
@@ -74,6 +75,15 @@ public String getWelcome() {
         } else throw new EmployeePayrollException("Employee id not found");
     }
 
+    public List<Employee> getDataByFirstName(String firstName){
+    List<Employee> newEmployee = repository.findByDepartment(firstName);
+    if(newEmployee.isEmpty()){
+        log.warn("Given name data is not found" +firstName);
+        throw new EmployeePayrollException("Employee Not found");
+    }
+    return newEmployee;
+   }
+
     public Employee updateDataById(Integer id, EmployeeDTO employeeDTO) {
         Optional<Employee> newEmployee = repository.findById(id);
         if (newEmployee.isPresent()) {
@@ -93,5 +103,12 @@ public String getWelcome() {
             throw new EmployeePayrollException("Employee Details not found");
         }
         return null;
+    }
+    public List<Employee> getDataByDepartment(String department) {
+        List<Employee> newEmp = repository.findByDepartment(department);
+        if (newEmp.isEmpty()) {
+            throw new EmployeePayrollException("Employee Not Found");
+        }
+        return newEmp;
     }
 }

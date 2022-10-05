@@ -4,7 +4,7 @@ import com.example.employeepayrollserviceapp.dto.EmployeeDTO;
 import com.example.employeepayrollserviceapp.model.Employee;
 
 import java.util.List;
-import java.util.Optional;
+
 public interface IEmployeePayrollService {
 
     public String getWelcome();
@@ -15,7 +15,11 @@ public interface IEmployeePayrollService {
 
     public Employee getDataById(Integer id);
 
+    public List<Employee> getDataByFirstName(String firstName);
+
     public Employee updateDataById(Integer id, EmployeeDTO employeeDTO);
 
     public String deleteDataById(Integer id);
+    public List<Employee> getDataByDepartment(String department);
+
 }

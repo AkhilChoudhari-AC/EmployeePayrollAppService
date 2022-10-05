@@ -91,48 +91,62 @@ public class EmployeePayrollController {
 //
 //}
     // UC 5 AND SO ON
-    //Ability to display welcome message
+    // for getting the Welcome message
     @GetMapping("/welcome")
     public ResponseEntity<String> getWelcome() {
         String welcome = service.getWelcome();
         return new ResponseEntity<String>(welcome, HttpStatus.OK);
     }
 
-    //Ability to save employee data to repo
+    // for crearing new data in database
     @PostMapping("/create")
     public ResponseEntity<String> addDataToRepo(@Valid @RequestBody EmployeeDTO employeeDTO) {
         Employee newEmployee = service.postDataToRepo(employeeDTO);
-        ResponseDTO responseDTO = new ResponseDTO("Data Added Succesfully", newEmployee);
+        ResponseDTO responseDTO = new ResponseDTO("Record Added Succesfully", newEmployee);
         return new ResponseEntity(responseDTO, HttpStatus.CREATED);
     }
-    //Ability to get all employees' data by findAll() method
+
+    //for getting all data from database
     @GetMapping("/get")
     public ResponseEntity<String> getAllDataFromRepo() {
         List<Employee> listOfEmployee = service.getAllData();
-        ResponseDTO responseDTO = new ResponseDTO("Data Retrieved Successfully", listOfEmployee);
+        ResponseDTO responseDTO = new ResponseDTO("Record Retrieved Successfully", listOfEmployee);
         return new ResponseEntity(responseDTO, HttpStatus.OK);
     }
-    //Ability to get employee data by id
+
+    // for getting data by Id from data base
     @GetMapping("/get/{id}")
     public ResponseEntity<String> getDataFromRepoById(@PathVariable Integer id) throws EmployeePayrollException {
         Employee existingEmployee = service.getDataById(id);
-        ResponseDTO responseDTO = new ResponseDTO("ID data Retrieved Successfully", existingEmployee);
+        ResponseDTO responseDTO = new ResponseDTO("Record for given ID Retrieved Successfully", existingEmployee);
         return new ResponseEntity(responseDTO, HttpStatus.OK);
     }
-    //Ability to update employee data for particular id
+
+    // for updating data by id in database
     @PutMapping("/update/{id}")
     public ResponseEntity<String> updateDataInRepo(@PathVariable Integer id, @Valid @RequestBody EmployeeDTO employeeDTO)
             throws EmployeePayrollException {
         Employee updatedEmployee = service.updateDataById(id, employeeDTO);
-        ResponseDTO responseDTO = new ResponseDTO("ID data Updated Successfully", updatedEmployee);
+        ResponseDTO responseDTO = new ResponseDTO("Record for particular ID Updated Successfully", updatedEmployee);
         return new ResponseEntity(responseDTO, HttpStatus.ACCEPTED);
     }
-    //Ability to delete employee data for particular id
-    //
+    //for deleting the data by Id in database
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteDataInRepo(@PathVariable Integer id) throws EmployeePayrollException {
         ResponseDTO responseDTO = new ResponseDTO
-                ("ID data Deleted Successfully", service.deleteDataById(id));
+                ("Record for particular ID Deleted Successfully", service.deleteDataById(id));
         return new ResponseEntity(responseDTO, HttpStatus.ACCEPTED);
     }
+    //for getting data by department from database
+    @GetMapping("/getbydepartment/{department}")
+    public ResponseEntity<ResponseDTO> getRecordFromRepoByDepartment(@PathVariable String department) throws EmployeePayrollException {
+        List<Employee> newEmployee = service.getDataByDepartment(department);
+        ResponseDTO dto = new ResponseDTO("Record for given Department Retrieved Successfully", newEmployee);
+        return new ResponseEntity(dto, HttpStatus.OK);
+    }
+
+
+
+
+
 }
